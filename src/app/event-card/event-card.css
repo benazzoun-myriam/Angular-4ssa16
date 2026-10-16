@@ -1,0 +1,126 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.event-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1.1rem;
+  box-shadow: var(--shadow-card);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  border-color: #cbd6fa;
+  box-shadow: 0 20px 42px rgb(23 43 77 / 13%);
+}
+
+.event-card.active {
+  border-color: #f2cd70;
+}
+
+.event-image {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #e3ebfb, #dcefeb);
+}
+
+.event-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 1.25rem 1.35rem 1.1rem;
+}
+
+.category-badge {
+  padding: 0.35rem 0.65rem;
+  color: #146a75;
+  background: #e4f6f5;
+  border: 1px solid #c8eeeb;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+}
+
+.event-card h3 {
+  margin: 0.1rem 0 0;
+  color: var(--color-ink);
+  font-size: 1.2rem;
+  font-weight: 720;
+  letter-spacing: -0.025em;
+  line-height: 1.35;
+}
+
+.event-card p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.event-content p:first-of-type {
+  margin-top: 0.15rem;
+}
+
+.event-content button {
+  width: 100%;
+  margin-top: auto;
+  padding: 0.72rem 0.85rem;
+  color: #42536e;
+  background: #f7f9fc;
+  border: 1px solid #dce4ef;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.86rem;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.event-content button:hover {
+  color: var(--color-primary-dark);
+  background: #eff3ff;
+  border-color: #cbd6fa;
+}
+
+.event-content button.is-fav {
+  color: #805300;
+  background: #fff5d9;
+  border-color: #f0d58f;
+}
+
+.details-btn {
+  display: block;
+  margin: 0 1.35rem 1.25rem;
+  padding: 0.72rem 0.85rem;
+  color: var(--color-primary-dark);
+  background: #edf2ff;
+  border: 1px solid #dce5ff;
+  border-radius: 0.7rem;
+  text-decoration: none;
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.details-btn:hover {
+  color: #fff;
+  background: var(--color-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-card:hover {
+    transform: none;
+  }
+}

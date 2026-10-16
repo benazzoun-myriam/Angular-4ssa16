@@ -1,21 +1,26 @@
 <div class="event-list-container">
   <h2>Liste des Événements</h2>
-  
-  <p class="favorites-counter">⭐ Nombre de favoris : <strong>{{ favoriteCount() }}</strong></p>
+
+  <div class="counter-badge">
+    ⭐ Favoris : <strong>{{ favoriteCount() }}</strong>
+  </div>
+
+  <div class="filter-buttons">
+    <button (click)="filterByCategory('Tous')" [class.active]="selectedCategory() === 'Tous'">Tous</button>
+    <button (click)="filterByCategory('Atelier')" [class.active]="selectedCategory() === 'Atelier'">Atelier</button>
+    <button (click)="filterByCategory('Conférence')" [class.active]="selectedCategory() === 'Conférence'">Conférence</button>
+    <button (click)="filterByCategory('Sport')" [class.active]="selectedCategory() === 'Sport'">Sport</button>
+  </div>
 
   <div class="events-grid">
-    @for (event of events(); track event.id) {
-      <div class="event-card-wrapper">
-        <h3>{{ event.title }}</h3>
-        <p>Catégorie : {{ event.category }}</p>
-        <p>Prix : {{ event.price }} DT</p>
-        <p>Date : {{ event.date | date:'dd/MM/yyyy' }}</p>
-        <button (click)="toggleFavorite(event.id)">
-          {{ favoriteIds().includes(event.id) ? 'Retirer des favoris' : 'Ajouter aux favoris' }}
-        </button>
-      </div>
+    @for (event of filteredEvents(); track event.id) {
+      <app-event-card 
+        [event]="event" 
+        [isFavorite]="isFavorite(event.id)"
+        (favoriteToggle)="toggleFavorite($event)">
+      </app-event-card>
     } @empty {
-      <p class="empty-message">Aucun événement disponible</p>
+      <p class="empty-message">Aucun événement disponible dans cette catégorie.</p>
     }
   </div>
 </div>

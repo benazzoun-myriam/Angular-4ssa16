@@ -1,0 +1,22 @@
+:host {
+  display: grid;
+  min-height: 280px;
+  place-items: center;
+}
+
+p {
+  width: min(100%, 680px);
+  margin: 0;
+  padding: clamp(2rem, 6vw, 4rem);
+  color: var(--color-ink);
+  background:
+    radial-gradient(circle at 100% 0%, rgb(17 165 160 / 12%), transparent 14rem),
+    var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-card);
+  font-size: clamp(1.35rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  text-align: center;
+}

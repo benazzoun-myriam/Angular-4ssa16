@@ -1,1 +1,17 @@
-<p>event-details works!</p>
+<div class="event-details-container">
+  @if (event()) {
+    <h2>{{ event().title }}</h2>
+    <p><strong>Catégorie :</strong> {{ event().category }}</p>
+    <p><strong>Date :</strong> {{ event().date | date:'dd/MM/yyyy' }}</p>
+    <p><strong>Prix :</strong> {{ event().price | currency:'EUR':'symbol' }}</p>
+    <p class="description"><strong>Description :</strong> {{ event().description }}</p>
+    
+    <a routerLink="/events" class="back-btn">← Retour à la liste</a>
+  } @else if (notFound()) {
+    <div class="error-box">
+      <h3>⚠️ Oups ! Événement introuvable</h3>
+      <p>L'événement que vous recherchez n'existe pas ou a été supprimé.</p>
+      <a routerLink="/events" class="back-btn">Retourner aux événements</a>
+    </div>
+  }
+</div>
