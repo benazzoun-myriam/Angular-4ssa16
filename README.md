@@ -1,7 +1,17 @@
-## Rôle des composants
+# EventHub — Catalogue d’événements
 
-- **Header** : Affiche l'en-tête principal de l'application comprenant le titre et le menu de navigation global.
-- **EventList** : Affiche la liste complète de tous les événements disponibles sous forme de collection.
-- **EventCard** : Représente un aperçu synthétique d'un événement individuel (titre, date, image) au sein de la liste.
-- **EventDetails** : Affiche les informations complètes et détaillées d'un événement sélectionné par l'utilisateur.
-- **NotFound** : Sert de page d'erreur 404 pour intercepter et notifier l'utilisateur lorsqu'une route ou un événement est introuvable.
+## 1. Description du projet
+**EventHub** est une application web moderne développée dans le cadre d'une étude de cas individuelle avec **Angular 21**. Elle permet à une association étudiante de présenter ses activités (ateliers, conférences, sports), de filtrer les événements par catégorie, de gérer une liste de favoris en temps réel grâce aux **Signals**, et de consulter les détails de chaque activité via un routage dynamique. L'application fonctionne entièrement côté client avec des données statiques intégrées.
+
+## 2. Versions et cadre technique
+- **Framework :** Angular 21 (Architecture *Standalone Components*)
+- **Gestion d'état réactive :** Angular Signals (`signal`, `computed`, `.update()`, `.set()`)
+- **Flux de contrôle :** `@for`, `@empty`, `@if / @else`
+- **Routage :** `provideRouter()`, `withComponentInputBinding()`, *Lazy Loading* (`loadComponent()`)
+- **Langages :** TypeScript, HTML5, CSS3
+
+## 3. Instructions d'installation et de lancement
+1. Cloner le dépôt Git :
+   ```bash
+   git clone <URL_DU_DEPOT>
+   cd eventhub-ben-azzoun-myriam
