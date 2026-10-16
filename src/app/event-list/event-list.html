@@ -1,1 +1,21 @@
-<p>event-list works!</p>
+<div class="event-list-container">
+  <h2>Liste des Événements</h2>
+  
+  <p class="favorites-counter">⭐ Nombre de favoris : <strong>{{ favoriteCount() }}</strong></p>
+
+  <div class="events-grid">
+    @for (event of events(); track event.id) {
+      <div class="event-card-wrapper">
+        <h3>{{ event.title }}</h3>
+        <p>Catégorie : {{ event.category }}</p>
+        <p>Prix : {{ event.price }} DT</p>
+        <p>Date : {{ event.date | date:'dd/MM/yyyy' }}</p>
+        <button (click)="toggleFavorite(event.id)">
+          {{ favoriteIds().includes(event.id) ? 'Retirer des favoris' : 'Ajouter aux favoris' }}
+        </button>
+      </div>
+    } @empty {
+      <p class="empty-message">Aucun événement disponible</p>
+    }
+  </div>
+</div>
