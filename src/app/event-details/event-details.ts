@@ -11,7 +11,6 @@ import { EventService } from '../event.service';
   styleUrl: './event-details.css',
 })
 export class EventDetailsComponent {
-  // Récupération automatique du paramètre :id de la route grâce à withComponentInputBinding()
   id = input<string>();
 
   private readonly eventService = inject(EventService);

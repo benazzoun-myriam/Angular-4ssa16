@@ -20,7 +20,50 @@
 - Synchronisation immédiate des favoris, de la liste et des compteurs
 - Réinitialisation de l'état au rechargement complet de l'application
 
-## 3. Instructions d'installation et de lancement
+## 4. Tests
+La suite de tests couvre les principaux parcours de la Partie C :
+
+- formulaire vide et bouton de soumission désactivé
+- titre trop court et prix négatif
+- création d'un événement valide et navigation vers `/events`
+- génération d'un identifiant par le service
+- filtrage et favoris
+- suppression avec confirmation et nettoyage des favoris
+- chargement des détails depuis l'état partagé
+
+Lancer les tests avec :
+
+```bash
+npm test -- --watch=false
+```
+
+## 5. Captures d'écran
+
+### Liste des événements
+
+![Liste des événements](./public/event-list.png)
+
+### Formulaire invalide et validations
+
+![Formulaire invalide](./public/event-form-invalid.png)
+
+### Formulaire valide
+
+![Formulaire valide](./public/event-form-valid.png)
+
+### Favoris et compteurs
+
+![Favoris et compteurs](./public/favorites-and-counters.png)
+
+### Détails d'un événement
+
+![Détails d'un événement](./public/event-details.png)
+
+### Suppression d'un événement
+
+![Suppression d'un événement](./public/event-delete.png)
+
+## 6. Instructions d'installation et de lancement
 1. Cloner le dépôt Git :
    ```bash
    git clone <URL_DU_DEPOT>
