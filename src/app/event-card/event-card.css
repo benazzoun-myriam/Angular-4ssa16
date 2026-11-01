@@ -99,6 +99,19 @@
   border-color: #f0d58f;
 }
 
+.event-content button.delete-btn {
+  margin-top: 0;
+  color: #b23543;
+  background: #fff5f5;
+  border-color: #f2d3d5;
+}
+
+.event-content button.delete-btn:hover {
+  color: #fff;
+  background: #c94b57;
+  border-color: #c94b57;
+}
+
 .details-btn {
   display: block;
   margin: 0 1.35rem 1.25rem;

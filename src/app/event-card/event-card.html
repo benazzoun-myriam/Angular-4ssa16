@@ -16,6 +16,7 @@
         Ajouter aux favoris
       }
     </button>
+    <button class="delete-btn" type="button" (click)="onDeleteEvent()">Supprimer</button>
   </div>
 </div>
 <a [routerLink]="['/events', event().id]" class="details-btn">Voir les détails</a>

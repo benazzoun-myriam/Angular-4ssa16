@@ -8,8 +8,8 @@ import {
 } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Router, RouterLink } from '@angular/router';
-
-type EventCategory = 'Atelier' | 'Conférence' | 'Sport';
+import { EventCategory, NewEvent } from '../event.model';
+import { EventService } from '../event.service';
 
 interface EventFormValue {
   title: string;
@@ -29,6 +29,7 @@ interface EventFormValue {
 })
 export class EventForm {
   private readonly router = inject(Router);
+  private readonly eventService = inject(EventService);
 
   readonly eventForm = new FormGroup({
     title: new FormControl('', {
@@ -71,8 +72,17 @@ export class EventForm {
       return;
     }
 
-    const eventValue: EventFormValue = this.eventForm.getRawValue();
-    console.info('Événement prêt à être ajouté :', eventValue);
+    const eventValue = this.eventForm.getRawValue();
+    const newEvent: NewEvent = {
+      title: eventValue.title,
+      category: eventValue.category as EventCategory,
+      date: eventValue.date,
+      place: eventValue.place,
+      price: eventValue.price ?? 0,
+      imageUrl: eventValue.imageUrl || '/angular.png',
+      description: eventValue.description,
+    };
+    this.eventService.addEvent(newEvent);
     this.eventForm.reset({
       title: '',
       category: '',

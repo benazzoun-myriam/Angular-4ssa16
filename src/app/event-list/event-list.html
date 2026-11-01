@@ -4,6 +4,10 @@
   <div class="counter-badge">
     ⭐ Favoris : <strong>{{ favoriteCount() }}</strong>
   </div>
+  <div class="stats-row" aria-label="Statistiques des événements">
+    <span><strong>{{ eventCount() }}</strong> événements</span>
+    <span><strong>{{ freeEventCount() }}</strong> gratuits</span>
+  </div>
 
   <div class="filter-buttons">
     <button (click)="filterByCategory('Tous')" [class.active]="selectedCategory() === 'Tous'">Tous</button>
@@ -17,7 +21,8 @@
       <app-event-card
         [event]="event"
         [isFavorite]="isFavorite(event.id)"
-        (favoriteToggle)="toggleFavorite($event)">
+        (favoriteToggle)="toggleFavorite($event)"
+        (deleteEvent)="deleteEvent($event)">
       </app-event-card>
     } @empty {
       <p class="empty-message">Aucun événement disponible dans cette catégorie.</p>

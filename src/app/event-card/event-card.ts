@@ -14,8 +14,13 @@ export class EventCard {
   isFavorite = input<boolean>(false);
 
   favoriteToggle = output<number>();
+  deleteEvent = output<number>();
 
   onToggleFavorite() {
     this.favoriteToggle.emit(this.event().id);
+  }
+
+  onDeleteEvent() {
+    this.deleteEvent.emit(this.event().id);
   }
 }
