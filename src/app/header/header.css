@@ -13,6 +13,7 @@ nav {
   box-shadow: 0 6px 24px rgb(23 43 77 / 5%);
   backdrop-filter: blur(16px);
   display: flex;
+  flex-wrap: wrap;
   gap: 0.65rem;
   align-items: center;
 }

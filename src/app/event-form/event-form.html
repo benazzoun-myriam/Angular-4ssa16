@@ -1,0 +1,96 @@
+<section class="form-page">
+  <div class="form-heading">
+    <div>
+      <p class="eyebrow">Nouvel événement</p>
+      <h1>Créer un événement</h1>
+      <p class="intro">Renseignez les informations principales de votre événement étudiant.</p>
+    </div>
+    <a routerLink="/events" class="back-link">Retour aux événements</a>
+  </div>
+
+  <form [formGroup]="eventForm" (ngSubmit)="addEvent()" novalidate>
+    <div class="form-grid">
+      <div class="field field-wide">
+        <label for="title">Titre <span>*</span></label>
+        <input id="title" type="text" formControlName="title" placeholder="Ex. Atelier Angular avancé" />
+        @if (hasError('title', 'required')) {
+          <small class="error">Le titre est obligatoire.</small>
+        } @else if (hasError('title', 'minlength')) {
+          <small class="error">Le titre doit contenir au moins 5 caractères.</small>
+        } @else if (hasError('title', 'maxlength')) {
+          <small class="error">Le titre ne peut pas dépasser 50 caractères.</small>
+        }
+      </div>
+
+      <div class="field">
+        <label for="category">Catégorie <span>*</span></label>
+        <select id="category" formControlName="category">
+          <option value="">Sélectionnez une catégorie</option>
+          <option value="Atelier">Atelier</option>
+          <option value="Conférence">Conférence</option>
+          <option value="Sport">Sport</option>
+        </select>
+        @if (hasError('category', 'required')) {
+          <small class="error">La catégorie est obligatoire.</small>
+        }
+      </div>
+
+      <div class="field">
+        <label for="date">Date <span>*</span></label>
+        <input id="date" type="date" formControlName="date" />
+        @if (hasError('date', 'required')) {
+          <small class="error">La date est obligatoire.</small>
+        }
+      </div>
+
+      <div class="field">
+        <label for="place">Lieu <span>*</span></label>
+        <input id="place" type="text" formControlName="place" placeholder="Ex. Amphi A" />
+        @if (hasError('place', 'required')) {
+          <small class="error">Le lieu est obligatoire.</small>
+        } @else if (hasError('place', 'minlength')) {
+          <small class="error">Le lieu doit contenir au moins 3 caractères.</small>
+        }
+      </div>
+
+      <div class="field">
+        <label for="price">Prix (€) <span>*</span></label>
+        <input id="price" type="number" min="0" step="0.01" formControlName="price" placeholder="0" />
+        @if (hasError('price', 'required')) {
+          <small class="error">Le prix est obligatoire.</small>
+        } @else if (hasError('price', 'min')) {
+          <small class="error">Le prix doit être supérieur ou égal à 0.</small>
+        }
+      </div>
+
+      <div class="field field-wide">
+        <label for="imageUrl">URL de l'image <span class="optional">(facultatif)</span></label>
+        <input id="imageUrl" type="url" formControlName="imageUrl" placeholder="https://..." />
+      </div>
+
+      <div class="field field-wide">
+        <label for="description">Description <span>*</span></label>
+        <textarea id="description" rows="5" formControlName="description"
+          placeholder="Présentez le programme et les objectifs de l'événement..."></textarea>
+        @if (hasError('description', 'required')) {
+          <small class="error">La description est obligatoire.</small>
+        } @else if (hasError('description', 'minlength')) {
+          <small class="error">La description doit contenir au moins 20 caractères.</small>
+        }
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <a routerLink="/events" class="cancel-button">Annuler</a>
+      <button type="submit" [disabled]="eventForm.invalid">Créer l'événement</button>
+    </div>
+  </form>
+
+  <aside class="form-debug" aria-live="polite">
+    <div>
+      <span>Statut du formulaire</span>
+      <strong [class.valid]="formStatus() === 'VALID'">{{ formStatus() }}</strong>
+    </div>
+    <pre>{{ formValue() | json }}</pre>
+  </aside>
+</section>

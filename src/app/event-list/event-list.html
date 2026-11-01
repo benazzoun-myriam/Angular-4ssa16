@@ -14,8 +14,8 @@
 
   <div class="events-grid">
     @for (event of filteredEvents(); track event.id) {
-      <app-event-card 
-        [event]="event" 
+      <app-event-card
+        [event]="event"
         [isFavorite]="isFavorite(event.id)"
         (favoriteToggle)="toggleFavorite($event)">
       </app-event-card>
